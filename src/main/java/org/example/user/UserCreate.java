@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
 import java.io.File;
-import java.util.Map;
 
 public class UserCreate extends org.example.Client {
     public static final String REGISTER_PATH = "/register";
@@ -16,8 +15,7 @@ public class UserCreate extends org.example.Client {
         return spec()
                 .body(user)
                 .when()
-                .post(REGISTER_PATH)
-                .then().log().all();
+                .post(REGISTER_PATH).then();
     }
 
     @Step("Создание пользователя без ввода значений в поле Пароль")
@@ -26,7 +24,7 @@ public class UserCreate extends org.example.Client {
                 .body(userWithoutPassword)
                 .when()
                 .post(REGISTER_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Создание пользователя без ввода значений в поле Имя")
@@ -35,7 +33,7 @@ public class UserCreate extends org.example.Client {
                 .body(userWithoutName)
                 .when()
                 .post(REGISTER_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Создание пользователя без ввода значений в поле Email")
@@ -44,7 +42,7 @@ public class UserCreate extends org.example.Client {
                 .body(userWithoutEmail)
                 .when()
                 .post(REGISTER_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Изменение данных о пользователе")
@@ -55,7 +53,7 @@ public class UserCreate extends org.example.Client {
                 .body(json)
                 .when()
                 .patch(USER_PATH)
-                .then().log().all();
+                .then();
 
     }
 
@@ -65,7 +63,7 @@ public class UserCreate extends org.example.Client {
                 .header("authorization", accessToken)
                 .when()
                 .delete(USER_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Изменение данных о пользователе, без авторизации")
@@ -75,6 +73,6 @@ public class UserCreate extends org.example.Client {
                 .body(json)
                 .when()
                 .patch(USER_PATH)
-                .then().log().all();
+                .then();
     }
 }

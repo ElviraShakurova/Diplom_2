@@ -9,7 +9,7 @@ public class Client {
     public static final String BASE_PATH = "api/auth";
     public static final String BASE_URI = "https://stellarburgers.nomoreparties.site/";
 
-    public static RequestSpecification spec(){
+    public static RequestSpecification spec() {
         return given().log().all()
                 .contentType(ContentType.JSON)
                 .baseUri(BASE_URI)
@@ -17,7 +17,7 @@ public class Client {
                 ;
     }
 
-    public static RequestSpecification specOrders(){
+    public static RequestSpecification specOrders() {
         return given().log().all()
                 .contentType(ContentType.JSON)
                 .baseUri(BASE_URI)

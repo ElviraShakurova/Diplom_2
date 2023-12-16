@@ -5,17 +5,17 @@ import io.restassured.response.ValidatableResponse;
 
 import java.util.Map;
 
-public class LoginIn extends org.example.Client{
+public class LoginIn extends org.example.Client {
     public static final String LOGIN_PATH = "/login";
     public static final String LOGIN_LOGOUT = "/logout";
 
     @Step("Авторизация пользователя")
-    public ValidatableResponse login(Login login){
+    public ValidatableResponse login(Login login) {
         return spec()
                 .body(login)
                 .when()
                 .post(LOGIN_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Получение токена авторизации - accessToken")
@@ -35,11 +35,11 @@ public class LoginIn extends org.example.Client{
     }
 
     @Step("Выход из системы")
-    public ValidatableResponse logout(String refreshToken){
+    public ValidatableResponse logout(String refreshToken) {
         return spec()
                 .body(Map.of("token", String.valueOf(refreshToken)))
                 .when()
                 .post(LOGIN_LOGOUT)
-                .then().log().all();
+                .then();
     }
 }

@@ -1,7 +1,4 @@
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.example.login.Login;
 import org.example.login.LoginAssertions;
@@ -27,21 +24,20 @@ public class LoginTest {
     @Before
     public void setUp() {
         user = UserGenerator.random();
-        ValidatableResponse response = client.create(user);
-        check.createdSuccessfully(response, user);
+        client.create(user);
     }
 
     @Description("Тест проводит проверку успешной авторизации пользователя")
     @Test
-    public void testSuccessfulLogin(){
+    public void testSuccessfulLogin() {
         var creds = Login.from(user);
         ValidatableResponse loginResponse = clientLogin.login(creds);
-        checkLogin.loginSuccessfully(loginResponse,user);
+        checkLogin.loginSuccessfully(loginResponse, user);
     }
 
     @Description("Тест проводит проверки неуспешной авторизации пользователя, с неверным логином и паролем")
     @Test
-    public void testErrorLogin(){
+    public void testErrorLogin() {
         user.setEmail("testPupsik@mail.ru");
         var creds = Login.from(user);
         ValidatableResponse loginResponse = clientLogin.login(creds);

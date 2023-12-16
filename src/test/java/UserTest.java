@@ -15,7 +15,7 @@ public class UserTest {
 
     @Description("Тест проводит проверку создания пользователя")
     @Test
-    public void testCreateUser(){
+    public void testCreateUser() {
         var user = UserGenerator.random();
         ValidatableResponse response = client.create(user);
         check.createdSuccessfully(response, user);

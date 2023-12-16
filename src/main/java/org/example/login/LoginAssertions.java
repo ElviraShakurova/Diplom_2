@@ -1,6 +1,5 @@
 package org.example.login;
 
-import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import org.example.user.User;
@@ -12,7 +11,7 @@ import static org.hamcrest.Matchers.equalToIgnoringCase;
 public class LoginAssertions {
 
     @Step("Проверка успешной авторизации")
-    public void loginSuccessfully(ValidatableResponse response, User user){
+    public void loginSuccessfully(ValidatableResponse response, User user) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", equalTo(true))
@@ -23,7 +22,7 @@ public class LoginAssertions {
     }
 
     @Step("Проверка неуспешной авторизации")
-    public void errorLogin(ValidatableResponse response){
+    public void errorLogin(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(401)
                 .body("success", equalTo(false))
@@ -32,7 +31,7 @@ public class LoginAssertions {
     }
 
     @Step("Проверка успешного выхода из системы")
-    public void logoutSuccessfully(ValidatableResponse response){
+    public void logoutSuccessfully(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", equalTo(true))

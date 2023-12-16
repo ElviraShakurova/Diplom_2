@@ -1,28 +1,30 @@
 package org.example.user;
 
 public class UserWithoutPassword {
-private String email;
-private String name;
+    private String email;
+    private String name;
 
-public UserWithoutPassword(){}
+    public UserWithoutPassword() {
+    }
 
-public UserWithoutPassword(String email, String name) {
+    public UserWithoutPassword(String email, String name) {
         this.email = email;
         this.name = name;
-        }
+    }
 
-public String getEmail() {
-        return email;}
+    public String getEmail() {
+        return email;
+    }
 
-public String getName() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
         return name;
-        }
+    }
 
-public void setEmail(String email) {
-        this.email = email;
-        }
-
-public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        }
+    }
 }

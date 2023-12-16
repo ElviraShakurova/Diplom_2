@@ -17,8 +17,6 @@ public class GetOrderResponse {
     @JsonProperty("totalToday")
     private int totalToday;
 
-    // Getters and Setters
-
     public boolean isSuccess() {
         return success;
     }

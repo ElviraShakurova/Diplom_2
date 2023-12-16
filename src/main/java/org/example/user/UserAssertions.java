@@ -3,13 +3,14 @@ package org.example.user;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class UserAssertions {
 
     @Step("Проверка успешного создания пользователя")
-    public void createdSuccessfully(ValidatableResponse response, User user){
+    public void createdSuccessfully(ValidatableResponse response, User user) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", equalTo(true))
@@ -20,7 +21,7 @@ public class UserAssertions {
     }
 
     @Step("Проверка создания уже зарегистрированного пользователя")
-    public void alreadyExists(ValidatableResponse response, String email){
+    public void alreadyExists(ValidatableResponse response, String email) {
         response.assertThat()
                 .statusCode(403)
                 .body("success", equalTo(false))
@@ -29,7 +30,7 @@ public class UserAssertions {
     }
 
     @Step("Проверка неуспешного создания пользователя, без заполнения одного из обязательных полей")
-    public void createdWithError(ValidatableResponse response){
+    public void createdWithError(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(403)
                 .body("success", equalTo(false))
@@ -37,14 +38,14 @@ public class UserAssertions {
     }
 
     @Step("Проверка успешного обновления данных о пользователе")
-    public void updateUser(ValidatableResponse response){
+    public void updateUser(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", equalTo(true));
     }
 
     @Step("Проверка неуспешного обновления данных о пользователе, без авторизации")
-    public void updateUserError(ValidatableResponse response){
+    public void updateUserError(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(401)
                 .body("success", equalTo(false))
@@ -52,7 +53,7 @@ public class UserAssertions {
     }
 
     @Step("Проверка успешного удаления пользователя")
-    public void deleteSuccessfully(ValidatableResponse response){
+    public void deleteSuccessfully(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(202)
                 .body("success", equalTo(true))
