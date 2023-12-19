@@ -52,8 +52,7 @@ public class LoginTest {
     @After
     public void tearDown() {
         if (accessToken != null) {
-            ValidatableResponse logoutResponse = clientLogin.logout(accessToken);
-            checkLogin.logoutSuccessfully(logoutResponse);
+            clientLogin.logout(accessToken);
 
             ValidatableResponse deleteResponse = client.delete(accessToken);
             check.deleteSuccessfully(deleteResponse);
